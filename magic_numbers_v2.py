@@ -3,7 +3,7 @@ import random, os
 # Globals
 MAX_NUMBER = 10
 PLAYER_NAME = None
-CREDITS = 10
+CREDITS = 30
 
 def main():
     clear_screen()
@@ -16,6 +16,7 @@ def main():
         exit()
 
     # Start game
+    game_loop()
 
 def clear_screen():
     os.system("cls")
@@ -28,7 +29,7 @@ def intro():
     print(f"Hello {PLAYER_NAME}!")
     print(f"I guess a number between 1 and {MAX_NUMBER}.")
     print("If you win, you get 10 credits. If you loose, I get 10 credits.")
-    print("I give you 10 credits for a start.")
+    print(f"I give you {CREDITS} credits for a start.")
     print("*"*50)
 
 def get_player_name():
@@ -72,12 +73,15 @@ def game_loop():
             exit()
     
     print(f"Now you have {CREDITS} credits")
+
+    # Ask player for a new game
     player_input = ask_for_start_game("Do you want to play agai?")
 
     if player_input != "y":
         print("Have a nice day.")
         exit()
     
+    # Start new game
     clear_screen()
     game_loop()
 
