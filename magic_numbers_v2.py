@@ -9,6 +9,14 @@ def main():
     clear_screen()
     intro()
 
+    player_input = ask_for_start_game("Are your ready?")
+
+    if player_input != "y":
+        print("Have a nice day.")
+        exit()
+
+    # Start game
+
 def clear_screen():
     os.system("cls")
 
@@ -28,14 +36,8 @@ def get_player_name():
     global PLAYER_NAME
     PLAYER_NAME = input("What is your name?")
 
-
 def ask_for_start_game(question):
-    user_input = input(f"{question} (y/n)")
-
-    if user_input != "y":
-        print("Have a nice day!")
-        exit()
-
+    return input(f"{question} (y/n)")
 
 
 # Call main() and start program
