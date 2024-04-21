@@ -20,8 +20,8 @@ job_queue = queue.Queue()
 for i in file_list:
     job_queue.put(i)
 
-
-def convert_image():
+# converter worker
+def convert_image_worker():
     while not job_queue.empty():
         file_path = job_queue.get()
         
@@ -30,3 +30,8 @@ def convert_image():
         print(f"Conversion finished: {file_path}")
 
         job_queue.task_done()
+
+# start workers
+for _ in range(10):
+    t = threading.Thread(target=convert_image_worker)
+    t.start()
