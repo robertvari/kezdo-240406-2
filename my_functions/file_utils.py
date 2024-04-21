@@ -19,8 +19,8 @@ def get_all_files(root_folder: str, file_list: list, ext: str=None):
     # get all content from root_folder
     folder_content = os.listdir(root_folder)
 
+    # separate files and folders
     subfolders = []
-
     for i in folder_content:
         full_path = os.path.join(root_folder, i)
 
@@ -29,5 +29,6 @@ def get_all_files(root_folder: str, file_list: list, ext: str=None):
         else:
             subfolders.append(full_path)
     
+    # recursive call for next folder
     for folder in subfolders:
         get_all_files(folder, file_list, ext)
