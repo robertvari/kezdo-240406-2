@@ -19,4 +19,15 @@ def get_all_files(root_folder: str, file_list: list, ext: str=None):
     # get all content from root_folder
     folder_content = os.listdir(root_folder)
 
-    pass
+    subfolders = []
+
+    for i in folder_content:
+        full_path = os.path.join(root_folder, i)
+
+        if os.path.isfile(full_path):
+            file_list.append(full_path)
+        else:
+            subfolders.append(full_path)
+    
+    for folder in subfolders:
+        get_all_files(folder, file_list, ext)
