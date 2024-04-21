@@ -25,7 +25,11 @@ def get_all_files(root_folder: str, file_list: list, ext: str=None):
         full_path = os.path.join(root_folder, i)
 
         if os.path.isfile(full_path):
-            file_list.append(full_path)
+            if ext:
+                if full_path.endswith(ext):
+                    file_list.append(full_path)
+            else:
+                file_list.append(full_path)
         else:
             subfolders.append(full_path)
     
