@@ -2,7 +2,6 @@ import time, random
 
 
 def my_timer(func):
-
     def wrapper(*args, **kwargs):
         start = time.time()
         result = func(*args, **kwargs)
@@ -13,6 +12,16 @@ def my_timer(func):
     return wrapper
 
 
+def i_do_nothing(func):
+    def wrapper(*args, **kwargs):
+        print("Hello! I do nothing ;)")
+        result = func(*args, **kwargs)
+        return result
+    
+    return wrapper
+
+
+@i_do_nothing
 @my_timer
 def worker1():
     print("Worker 1 started...")
