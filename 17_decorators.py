@@ -12,20 +12,26 @@ def my_timer(func):
 
     return wrapper
 
+
+@my_timer
 def worker1():
     print("Worker 1 started...")
     time.sleep(random.randint(2, 10))
     print("Worker 1 finished!")
 
+@my_timer
 def worker2():
     print("Worker 2 started...")
     time.sleep(random.randint(2, 10))
     print("Worker 2 finished!")
 
-start = time.time()
-worker1()
-print(f"Worker 1 process time: {time.time() - start}")
+@my_timer
+def worker3():
+    print("Worker 3 started...")
+    time.sleep(random.randint(2, 10))
+    print("Worker 3 finished!")
 
-start = time.time()
+
+worker1()
 worker2()
-print(f"Worker 2 process time: {time.time() - start}")
+worker3()
