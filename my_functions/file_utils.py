@@ -16,4 +16,7 @@ def get_all_files(root_folder: str, file_list: list, ext: str=None):
     # Check if file_list is a list
     assert isinstance(file_list, list), f"file_list must be of type list and not {type(file_list)}"
 
+    # get all content from root_folder
+    folder_content = os.listdir(root_folder)
+
     pass
