@@ -1,4 +1,4 @@
-import time, random
+import time, random, queue, threading
 
 file_list = [
     "image_0001.exr",
@@ -14,7 +14,19 @@ file_list = [
     "image_0011.exr",
 ]
 
+job_queue = queue.Queue()
+
+# fill up job queue
+for i in file_list:
+    job_queue.put(i)
+
+
 def convert_image():
-    print("Convert started...")
-    time.sleep(random.randint(3, 10))
-    print("Convert finished!")
+    while not job_queue.empty():
+        file_path = job_queue.get()
+        
+        print(f"Conversion started: {file_path}")
+        time.sleep(random.randint(3, 10))
+        print(f"Conversion finished: {file_path}")
+
+        job_queue.task_done()
