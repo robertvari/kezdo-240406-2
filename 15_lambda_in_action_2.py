@@ -8,11 +8,7 @@ movies = {
 }
 
 
-def get_score(movie_id):
-    return movies[movie_id]["score"]
-
-
-movies_sorted = sorted(movies, key=get_score, reverse=False)
+movies_sorted = sorted(movies, key=lambda movie_id: movies[movie_id]["score"], reverse=True)
 
 for movie_id in movies_sorted:
     print(f"Title:{movies[movie_id]['title']} Score: {movies[movie_id]['score']}")
