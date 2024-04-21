@@ -8,3 +8,10 @@ movies = {
 }
 
 
+def get_score(movie_id):
+    print(movie_id)
+    return movie_id
+
+
+movies_sorted = sorted(movies, key=get_score)
+print(movies_sorted)
